@@ -23,10 +23,10 @@ app.get("/(*/)?uploads/:file", (req, res) => {
   res.sendFile(path.resolve(__dirname, "uploads", req.params.file));
 });
 
-// app.use("/", express.static(path.join(__dirname, "client", "build")));
-// app.get("*", (req, res) => {
-//   res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
-// });
+app.use("/", express.static(path.join(__dirname, "client", "build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+});
 
 mongoose
   .connect(config.get("mongoUri"), {
