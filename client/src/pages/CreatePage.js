@@ -17,6 +17,7 @@ export const CreatePage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const inputRef = useRef();
+  const btnRef = useRef();
   const error = useSelector(state => state.error);
 
   const cb = useCallback(() => {
@@ -27,6 +28,7 @@ export const CreatePage = () => {
     if (window.M && error) {
       window.M.toast({ html: error, displayLength: 10000, classes: "rounded" });
       dispatch(clearError());
+      btnRef.current.classList.remove("disabled");
     }
   }, [error, dispatch]);
 
@@ -56,6 +58,7 @@ export const CreatePage = () => {
 
   const submitHandle = event => {
     event.preventDefault();
+    btnRef.current.classList.add("disabled");
 
     if (!form.title.trim()) dispatch(setError("Не заполнено название рецепта"));
     else if (!form.text.trim())
@@ -70,7 +73,7 @@ export const CreatePage = () => {
       <Navbar
         title="Создание рецепта"
         link="/"
-        action="Вернуться к списку рецептов"
+        action="&#10148;&nbsp;&nbsp;К списку рецептов"
       />
       <Header title="Самый свежий рецептик" />
       <div className="container">
@@ -83,6 +86,7 @@ export const CreatePage = () => {
           submit={submitHandle}
           changeFile={changeFileHandle}
           inputRef={inputRef}
+          btnRef={btnRef}
         />
       </div>
     </>

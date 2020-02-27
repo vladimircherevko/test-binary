@@ -21,7 +21,7 @@ export const HistoryPage = () => {
       <Navbar
         title="Архив"
         link={`/recipe/${id}`}
-        action="Вернуться к рецепту"
+        action="&#10148;&nbsp;&nbsp;К рецепту"
       />
       <Header title="Уже остывшие рецепты" />
       <div className="container">

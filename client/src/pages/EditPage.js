@@ -12,6 +12,7 @@ export const EditPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const inputRef = useRef();
+  const btnRef = useRef();
   const error = useSelector(state => state.error);
 
   const cb = useCallback(() => {
@@ -31,6 +32,7 @@ export const EditPage = () => {
     if (window.M && error) {
       window.M.toast({ html: error, displayLength: 10000, classes: "rounded" });
       dispatch(clearError());
+      btnRef.current.classList.remove("disabled");
     }
   }, [error, dispatch]);
 
@@ -46,6 +48,7 @@ export const EditPage = () => {
 
   const createHandle = event => {
     event.preventDefault();
+    btnRef.current.classList.add("disabled");
 
     if (!form.title.trim()) dispatch(setError("Не заполнено название рецепта"));
     else if (!form.text.trim())
@@ -81,7 +84,7 @@ export const EditPage = () => {
       <Navbar
         title="Изменение рецепта"
         link={`/recipe/${id}`}
-        action="Вернуться к рецепту"
+        action="&#10148;&nbsp;&nbsp;К рецепту"
       />
       <Header
         title={`Дата последнего изменения ${new Date(
@@ -98,6 +101,7 @@ export const EditPage = () => {
           submit={createHandle}
           changeFile={changeFileHandle}
           inputRef={inputRef}
+          btnRef={btnRef}
         />
       </div>
     </>

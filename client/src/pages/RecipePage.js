@@ -23,7 +23,7 @@ export const RecipePage = () => {
       <Navbar
         title="Страница рецепта"
         link="/"
-        action="Вернуться к списку рецептов"
+        action="&#10148;&nbsp;&nbsp;К списку рецептов"
       />
       <Header title="Еще горячий рецептик!" />
       <div className="container">

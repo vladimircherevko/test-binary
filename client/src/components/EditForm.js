@@ -8,7 +8,8 @@ export const EditForm = ({
   changeFile,
   submit,
   image,
-  inputRef
+  inputRef,
+  btnRef
 }) => {
   useEffect(() => {
     window.M.textareaAutoResize(document.querySelector("#parts"));
@@ -79,6 +80,7 @@ export const EditForm = ({
           <button
             className="btn waves-effect waves-light grey darken-1 white-text"
             type="submit"
+            ref={btnRef}
           >
             Сохранить
           </button>

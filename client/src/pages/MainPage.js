@@ -28,7 +28,7 @@ export const MainPage = () => {
       <Navbar
         title="Главная страница"
         link="/create"
-        action="Добавить новый рецепт"
+        action="&#9998;_&nbsp; Новый рецепт"
       />
       <Header title={`Самых свежих рецептов ${list.length}`} />
       <div className="container">
