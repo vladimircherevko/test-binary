@@ -1,27 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
+import { RecipeListItem } from "./RecipeListItem";
+
 export const RecipeList = ({ list }) => {
+  const [defaultImg, setDefaultImg] = useState("logo-color.png");
   const history = useHistory();
+
+  useEffect(() => {
+    setDefaultImg(null);
+  }, []);
 
   return (
     <div className="row">
       {list.map(item => (
-        <div className="col s12 m6 l4" key={item._id}>
-          <div
-            className="card hoverable"
-            onClick={() => history.push(`/recipe/${item._id}`)}
-          >
-            <div className="card-image">
-              <img src={item.image} alt="" />
-            </div>
-            <div className="card-content">
-              <span className="truncate deep-orange-text text-darken-4 bold-text">
-                {item.title}
-              </span>
-            </div>
-          </div>
-        </div>
+        <RecipeListItem
+          key={item._id}
+          clickHandle={() => history.push(`/recipe/${item._id}`)}
+          image={defaultImg || item.image}
+          title={item.title}
+        />
       ))}
     </div>
   );

@@ -38,9 +38,10 @@ input.hide {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-.px {
-  padding-left: 20px;
-  padding-right: 20px;
+
+.my {
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 .bold-text {
@@ -70,4 +71,8 @@ input.hide {
 .img-btn {
   width: 200px;
   margin-top: 20px;
+}
+
+.img-card {
+  min-height: 230px;
 }

@@ -9,8 +9,7 @@ import { Header } from "../components/Header";
 
 export const MainPage = () => {
   const dispatch = useDispatch();
-  const list = useSelector(state => state.list);
-  const error = useSelector(state => state.error);
+  const { list, error } = useSelector(state => state);
 
   useEffect(() => {
     dispatch(getList());
@@ -35,13 +34,19 @@ export const MainPage = () => {
         <div className="row">
           <h4 className="center-align cyan-text bold-text">Свежие рецепты</h4>
           <RecipeList list={list} />
-          <div className="center-align">
+          <div className="col s12 center-align my">
             <NavBtnBig
               title="Добавить самый-самый свежий рецепт"
               action="/create"
               letter="Добавить рецептик"
             />
           </div>
+          {(!list.length && (
+            <div className="col s12 center-align">
+              <img src="logo-color.png" alt="" className="img-btn" />
+            </div>
+          )) ||
+            null}
         </div>
       </div>
     </>

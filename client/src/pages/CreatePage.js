@@ -11,7 +11,7 @@ export const CreatePage = () => {
   const [form, setForm] = useState({
     title: "",
     text: "",
-    image: "uploads/default.png",
+    image: "logo-color.png",
     parts: ""
   });
   const dispatch = useDispatch();
